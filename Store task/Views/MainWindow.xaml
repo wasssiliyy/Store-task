@@ -1,0 +1,34 @@
+﻿<Window x:Class="Store_task.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Store_task" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="560" Width="1015" Background="Gray" WindowState="Normal" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition Width="195"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Image Source="\Images\bravo-logo.png" Margin="28,12,2,0"></Image>
+        <Button Command="{Binding InsertCommand}" Grid.Column="1" Margin="49,37,50,15" Content="Insert" FontSize="19" FontFamily="MS Gothic" Background="White" BorderThickness="0"></Button>
+
+        <ScrollViewer Grid.Row="1" Margin="0,0,3,0" >
+            <WrapPanel  Name="MyGrid1"></WrapPanel>
+        </ScrollViewer>
+        <Label  Grid.Row="1" Content="Categories" FontSize="20" Margin="0,0,0,0" Grid.Column="1"></Label>
+        <ComboBox ItemsSource="{Binding AllCategories}" SelectedItem="{Binding SelectedItem}" Grid.Row="1" Grid.Column="1" Margin="0,49,0,363">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectionChanged}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ComboBox>
+        <Button Command="{Binding DeleteCommand}" Grid.Column="1" Margin="49,393,50,10" Content="Delete" FontSize="19" FontFamily="MS Gothic" Background="White" BorderThickness="0" Grid.Row="1"/>
+    </Grid>
+</Window>
